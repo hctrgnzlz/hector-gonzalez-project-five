@@ -42,34 +42,9 @@ class DreamForm extends Component {
     });
   };
 
-  validate = () => {
-    let inputError = "";
-
-    if (
-      this.state.titleInput.length === 0 ||
-      this.state.dreamInput.length === 0
-    ) {
-      inputError = "Input fields cannot be blank";
-    }
-
-    if (inputError) {
-      this.setState({ inputError });
-      return false;
-    }
-
-    return true;
-  };
-
   handleClick = (event) => {
     event.preventDefault();
-    const isValid = this.validate();
-    if (isValid) {
-      this.setState({
-        titleInput: "",
-        dreamInput: "",
-        inputError: "",
-      });
-    }
+
     //tell react to submit inputs
     const dbRef = firebase.database().ref();
     //reference to the database
@@ -100,41 +75,47 @@ class DreamForm extends Component {
 
   render() {
     return (
-      <div className="dreamDiv">
-        <input
-          value={this.state.titleInput}
-          onChange={this.handleChange}
-          name="titleInput"
-          type="text"
-        />
-        <br />
-        <input
-          value={this.state.dreamInput}
-          onChange={this.handleChange}
-          name="dreamInput"
-          type="text"
-        />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <div className="dreamDiv">
+          <input
+            value={this.state.titleInput}
+            onChange={this.handleChange}
+            name="titleInput"
+            type="text"
+          />
+          <br />
+          <input
+            value={this.state.dreamInput}
+            onChange={this.handleChange}
+            name="dreamInput"
+            type="text"
+          />
 
-        <br />
-        <button onClick={this.handleClick}>Add Dream</button>
-        {/* <p className="errorMessage">{inputError}</p> */}
+          <br />
+          <button onClick={this.handleClick}>Add Dream</button>
+          {/* <p className="errorMessage">{inputError}</p> */}
 
-        <ul>
-          {this.state.dreams.map((dream) => {
-            return (
-              <li key={dream.id}>
-                <p>{dream.content.title}</p>
-                <p>{dream.content.desc}</p>
-                {/* target inputs in object by name */}
-                <button onClick={() => this.deleteDream(dream.id)}>
-                  Delete
-                </button>
-                {/* create button to delete dream by id */}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+          <ul>
+            {this.state.dreams.map((dream) => {
+              return (
+                <li key={dream.id}>
+                  <p>{dream.content.title}</p>
+                  <p>{dream.content.desc}</p>
+                  {/* target inputs in object by name */}
+                  <button onClick={() => this.deleteDream(dream.id)}>
+                    Delete
+                  </button>
+                  {/* create button to delete dream by id */}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </form>
     );
   }
 }

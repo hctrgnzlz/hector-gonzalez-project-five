@@ -9,7 +9,6 @@ class App extends Component {
       <div className="dreamDiv">
         <Header />
         <DreamForm />
-
         <footer>
           <p>hctr</p>
         </footer>
