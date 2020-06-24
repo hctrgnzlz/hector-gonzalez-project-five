@@ -8,7 +8,7 @@ class DreamForm extends Component {
       dreams: [],
       titleInput: "",
       dreamInput: "",
-      inputError: "",
+      inputError: true,
     };
   }
 
@@ -48,19 +48,28 @@ class DreamForm extends Component {
     //tell react to submit inputs
     const dbRef = firebase.database().ref();
     //reference to the database
-    const inputObj = {
-      title: this.state.titleInput,
-      desc: this.state.dreamInput,
-    };
-    //create object to push both inputs
 
-    dbRef.push(inputObj);
+    let error = this.state.dreamInput === "";
 
-    this.setState({
-      titleInput: "",
-      dreamInput: "",
-      inputError: "",
-    });
+    if (error) {
+      // console.log("string is empty");
+      alert("");
+    } else {
+      const inputObj = {
+        title: this.state.titleInput,
+        desc: this.state.dreamInput,
+      };
+      //create object to push both inputs
+
+      dbRef.push(inputObj);
+
+      this.setState({
+        titleInput: "",
+        dreamInput: "",
+        inputError: false,
+      });
+    }
+
     //after user adds information, clear inputs
   };
 
@@ -75,12 +84,9 @@ class DreamForm extends Component {
 
   render() {
     return (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form>
         <div className="dreamDiv">
+          Dream Title:{" "}
           <input
             value={this.state.titleInput}
             onChange={this.handleChange}
@@ -88,17 +94,16 @@ class DreamForm extends Component {
             type="text"
           />
           <br />
+          Dream Content:
           <input
             value={this.state.dreamInput}
             onChange={this.handleChange}
             name="dreamInput"
             type="text"
           />
-
+          <h3>error</h3>
           <br />
           <button onClick={this.handleClick}>Add Dream</button>
-          {/* <p className="errorMessage">{inputError}</p> */}
-
           <ul>
             {this.state.dreams.map((dream) => {
               return (

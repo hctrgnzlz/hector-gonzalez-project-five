@@ -249,7 +249,7 @@ code {
   overflow: none;
   position: relative;
   width: 100%;
-  height: 40vh;
+  min-height: 30vh;
   align-items: flex-start;
 }
 
@@ -263,19 +263,35 @@ img {
 
 .header-title {
   font-family: "Pacifico", cursive;
-  font-size: 100px;
-  color: white;
+  font-size: 150px;
+  color: #fc7db3;
   align-items: left;
   justify-content: flex-end;
   padding-left: 20px;
+  text-shadow: -4px 4px 0 #3d393e, -6px 8px 0 #000000;
+  position: relative;
 }
 
 ul {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul li {
-  border: solid 3px green;
-  width: 400px;
-  /* background-color: red; */
+  width: calc(100% / 3 - 40px);
+  margin: 0 20px 20px;
+  border: 3px solid #000000;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff0000;
 }

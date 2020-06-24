@@ -17,7 +17,7 @@ class Header extends Component {
       params: {
         client_id: "cDOViFNyBQD9qXEF626qEz25DTg6KOHx8b_2oq7mPdw",
         count: "1",
-        query: "galaxy",
+        query: "nebula",
       },
     }).then((response) => {
       let img = response.data[0].urls.regular;
