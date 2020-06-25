@@ -53,7 +53,7 @@ class DreamForm extends Component {
     window.scrollTo(0, this.scrollTop.current.offsetTop);
   };
 
-  handleRefresh = (event) => {
+  handleReturn = (event) => {
     event.preventDefault();
     this.scrollToTop();
   };
@@ -132,7 +132,7 @@ class DreamForm extends Component {
             className="dream-input"
           />
           <button onClick={this.handleClick} className="submit-btn">
-            Add Dream
+            Remember
           </button>
         </div>
 
@@ -162,10 +162,10 @@ class DreamForm extends Component {
           </ul>
           <button
             className="top-btn"
-            onClick={this.handleRefresh}
+            onClick={this.handleReturn}
             ref={this.scrollContent}
           >
-            TOP
+            Return
           </button>
         </div>
       </div>
