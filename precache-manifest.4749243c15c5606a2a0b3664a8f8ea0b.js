@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ad8f02e637dfa27347bf6a0ef8e33fba",
+    "revision": "a7de49a87ee301122676761451748a4d",
     "url": "/hector-gonzalez-project-five/index.html"
   },
   {
-    "revision": "4237b7045fcce4dfa88d",
-    "url": "/hector-gonzalez-project-five/static/css/main.f9fd5cad.chunk.css"
+    "revision": "0d6bd3374ff5461b87d6",
+    "url": "/hector-gonzalez-project-five/static/css/main.e5c111d2.chunk.css"
   },
   {
     "revision": "06bd572ceb408383afe8",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hector-gonzalez-project-five/static/js/2.683f6427.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4237b7045fcce4dfa88d",
-    "url": "/hector-gonzalez-project-five/static/js/main.1e0d4f77.chunk.js"
+    "revision": "0d6bd3374ff5461b87d6",
+    "url": "/hector-gonzalez-project-five/static/js/main.254b68d2.chunk.js"
   },
   {
     "revision": "09ffe30fc94f15945c09",
