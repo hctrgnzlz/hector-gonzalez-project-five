@@ -245,11 +245,11 @@ code {
   width: 100%;
 }
 .background {
-  /* border: solid red 5px; */
+  border: solid red 5px;
   overflow: none;
   position: relative;
   width: 100%;
-  min-height: 30vh;
+  min-height: 40vh;
   align-items: flex-start;
 }
 
@@ -268,11 +268,25 @@ img {
   align-items: left;
   justify-content: flex-end;
   padding-left: 20px;
-  text-shadow: -4px 4px 0 #3d393e, -6px 8px 0 #000000;
+  text-shadow: -4px 4px 0 #3d393e, -6px 9px 0 #000000;
   position: relative;
+  margin: 0;
 }
 
-ul {
+.header-sub {
+  font-family: "Fjalla One", sans-serif;
+  color: #ffffff;
+  /* -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #ffffff; */
+  padding: 0 0 0 20px;
+  text-shadow: -4px 4px 0 #000000;
+
+  font-size: 60px;
+  line-height: 60px;
+}
+
+.dream-list {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -282,7 +296,7 @@ ul {
   margin: 0;
 }
 
-ul li {
+.dream-item {
   width: calc(100% / 3 - 40px);
   margin: 0 20px 20px;
   border: 3px solid #000000;
@@ -293,5 +307,28 @@ ul li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ff0000;
+  background-color: pink;
+}
+
+.fas {
+  color: yellow;
+  align-self: flex-end;
+  font-size: 35px;
+}
+
+.dream-title {
+  color: #000000;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 25px;
+  margin: 0;
+}
+
+.dream-content {
+  color: blue;
+  font-family: Consolas, monaco, monospace;
+}
+
+.dream-date {
+  color: blue;
+  font-family: Consolas, monaco, monospace;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import swal from "sweetalert";
 import firebase from "../firebase.js";
 
 class DreamForm extends Component {
@@ -8,8 +9,10 @@ class DreamForm extends Component {
       dreams: [],
       titleInput: "",
       dreamInput: "",
-      inputError: true,
+      date: new Date(),
     };
+    this.scrollContent = React.createRef();
+    this.scrollTop = React.createRef();
   }
 
   componentDidMount() {
@@ -42,6 +45,20 @@ class DreamForm extends Component {
     });
   };
 
+  scrollDream = () => {
+    window.scrollTo(0, this.scrollContent.current.offsetTop);
+  };
+
+  // Function to scroll to top of the page on refresh
+  scrollToTop = () => {
+    window.scrollTo(0, this.scrollTop.current.offsetTop);
+  };
+
+  handleRefresh = (event) => {
+    event.preventDefault();
+    this.scrollToTop();
+  };
+
   handleClick = (event) => {
     event.preventDefault();
 
@@ -53,7 +70,7 @@ class DreamForm extends Component {
 
     if (error) {
       // console.log("string is empty");
-      alert("");
+      swal("Here's the title!", "...and here's the text!");
     } else {
       const inputObj = {
         title: this.state.titleInput,
@@ -66,8 +83,9 @@ class DreamForm extends Component {
       this.setState({
         titleInput: "",
         dreamInput: "",
-        inputError: false,
       });
+
+      this.scrollDream();
     }
 
     //after user adds information, clear inputs
@@ -77,48 +95,71 @@ class DreamForm extends Component {
     //tell fb to delete a book based on its unique id
     const dbRef = firebase.database().ref();
     //remove the specific node in fb based on its unique id
+    swal({
+      title: "Are you sure you want to delete this memory?",
+      text: "Once a dream is deleted, you will not be able to recover it",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        dbRef.child(dreamId).remove();
+      } else {
+        swal("Your dream will continue to be stored!");
+      }
+    });
+    // dbRef.child(dreamId).remove();
 
-    dbRef.child(dreamId).remove();
     //find data that lives in dreamID and remove it
   };
 
   render() {
     return (
       <form>
-        <div className="dreamDiv">
-          Dream Title:{" "}
+        <div className="dreamDiv" ref={this.scrollTop}>
           <input
             value={this.state.titleInput}
             onChange={this.handleChange}
+            placeholder="Dream Title"
             name="titleInput"
             type="text"
           />
           <br />
-          Dream Content:
           <input
             value={this.state.dreamInput}
             onChange={this.handleChange}
+            placeholder="Dream Content"
             name="dreamInput"
             type="text"
           />
-          <h3>error</h3>
           <br />
           <button onClick={this.handleClick}>Add Dream</button>
-          <ul>
+          <ul className="dream-list" ref={this.scrollContent}>
             {this.state.dreams.map((dream) => {
               return (
-                <li key={dream.id}>
-                  <p>{dream.content.title}</p>
-                  <p>{dream.content.desc}</p>
+                <li className="dream-item" key={dream.id}>
+                  <i
+                    className="fas fa-window-close"
+                    onClick={() => this.deleteDream(dream.id)}
+                  ></i>
+
+                  <p className="dream-title">{dream.content.title}</p>
+                  <p className="dream-content">{dream.content.desc}</p>
+                  <p className="dream-date">
+                    {this.state.date.toLocaleDateString()}
+                  </p>
                   {/* target inputs in object by name */}
-                  <button onClick={() => this.deleteDream(dream.id)}>
+                  {/* <button onClick={() => this.deleteDream(dream.id)}>
                     Delete
-                  </button>
+                  </button> */}
                   {/* create button to delete dream by id */}
                 </li>
               );
             })}
           </ul>
+          <button className="refresh" onClick={this.handleRefresh}>
+            TOP{" "}
+          </button>
         </div>
       </form>
     );

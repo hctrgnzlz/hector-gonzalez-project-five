@@ -17,7 +17,7 @@ class Header extends Component {
       params: {
         client_id: "cDOViFNyBQD9qXEF626qEz25DTg6KOHx8b_2oq7mPdw",
         count: "1",
-        query: "nebula",
+        query: "cloud",
       },
     }).then((response) => {
       let img = response.data[0].urls.regular;
@@ -33,6 +33,9 @@ class Header extends Component {
       <div className="background">
         <img src={this.state.img} />
         <h1 className="header-title">Lucid</h1>
+        <h2 className="header-sub">
+          a recollection <br></br>of dreams
+        </h2>
       </div>
     );
   }
