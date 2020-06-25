@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hector-gonzalez-project-five/precache-manifest.c36dacf219805794e76ecc00bcb0b2d1.js"
+  "/hector-gonzalez-project-five/precache-manifest.b4d5fba27a5c547cf3ad6cbbae9f4270.js"
 );
 
 self.addEventListener('message', (event) => {
