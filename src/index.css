@@ -229,6 +229,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0d0d0d;
 }
 
 code {
@@ -238,14 +239,7 @@ code {
 
 /* CSS STARTS */
 
-.dreamDiv {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 .background {
-  border: solid red 5px;
   overflow: none;
   position: relative;
   width: 100%;
@@ -276,14 +270,84 @@ img {
 .header-sub {
   font-family: "Fjalla One", sans-serif;
   color: #ffffff;
-  /* -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #ffffff; */
   padding: 0 0 0 20px;
   text-shadow: -4px 4px 0 #000000;
 
   font-size: 60px;
   line-height: 60px;
+}
+
+.dream-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+  background-color: #0d0d0d;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  background-color: #191919;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+input[type="text"] {
+  font-family: Consolas, monaco, monospace;
+  color: #f93959;
+  font-size: 20px;
+}
+
+input[type="text"],
+textarea {
+  background-color: #191919;
+  border: 1px solid #6f7074;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.dream-input {
+  height: 80px;
+}
+
+button {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #f93959;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  color: #ffffff;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 25px;
+}
+button:focus {
+  border: 2px solid #ffffff;
+}
+.top-btn:hover,
+.submit-btn:hover {
+  background-color: #000000;
+  color: #f93959;
+}
+.top-btn {
+  align-self: center;
+}
+
+.swal-overlay {
+  background-color: rgba(249, 57, 89, 0.55);
 }
 
 .dream-list {
@@ -297,38 +361,88 @@ img {
 }
 
 .dream-item {
-  width: calc(100% / 3 - 40px);
-  margin: 0 20px 20px;
-  border: 3px solid #000000;
+  width: calc(100% / 3 - 20px);
+  margin: 0 10px 20px;
+  border: 1px solid #6f7074;
   padding: 0;
   position: relative;
-  align-items: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: pink;
+  justify-content: space-between;
+  background-color: #202024;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
 }
 
-.fas {
-  color: yellow;
+.dream-item:hover {
+  box-shadow: 0px 2px 25px 6px rgba(0, 0, 0, 0.57);
+  transform: scale(1.02);
+}
+
+.button-favi {
+  padding: 0;
+  background-color: #202024;
+  align-self: flex-end;
+}
+
+.fas,
+.fab {
+  color: #f93959;
   align-self: flex-end;
   font-size: 35px;
+  padding: 2px 5px 0 0;
+}
+.fas:hover,
+.fab:hover {
+  color: #000000;
 }
 
 .dream-title {
-  color: #000000;
+  color: #ffffff;
   font-family: "Fjalla One", sans-serif;
   font-size: 25px;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .dream-content {
-  color: blue;
+  color: #6f7074;
+  font-family: Consolas, monaco, monospace;
+  padding: 20px;
+}
+
+.dream-date,
+footer {
+  color: #f93959;
   font-family: Consolas, monaco, monospace;
 }
 
-.dream-date {
-  color: blue;
-  font-family: Consolas, monaco, monospace;
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  margin-right: 30px;
+}
+
+.fa-globe,
+.fa-github,
+.fa-twitter {
+  font-size: 20px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 940px) {
+  .dream-item {
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .dream-item {
+    width: calc(100% / 1 - 20px);
+  }
 }

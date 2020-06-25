@@ -70,7 +70,7 @@ class DreamForm extends Component {
 
     if (error) {
       // console.log("string is empty");
-      swal("Here's the title!", "...and here's the text!");
+      swal("You must enter a dream!", "");
     } else {
       const inputObj = {
         title: this.state.titleInput,
@@ -98,7 +98,6 @@ class DreamForm extends Component {
     swal({
       title: "Are you sure you want to delete this memory?",
       text: "Once a dream is deleted, you will not be able to recover it",
-      icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
@@ -115,8 +114,8 @@ class DreamForm extends Component {
 
   render() {
     return (
-      <form>
-        <div className="dreamDiv" ref={this.scrollTop}>
+      <div className="dream-div" ref={this.scrollTop}>
+        <div className="input-div">
           <input
             value={this.state.titleInput}
             onChange={this.handleChange}
@@ -124,24 +123,31 @@ class DreamForm extends Component {
             name="titleInput"
             type="text"
           />
-          <br />
+
           <input
             value={this.state.dreamInput}
             onChange={this.handleChange}
             placeholder="Dream Content"
             name="dreamInput"
             type="text"
+            className="dream-input"
           />
-          <br />
-          <button onClick={this.handleClick}>Add Dream</button>
+          <button onClick={this.handleClick} className="submit-btn">
+            Add Dream
+          </button>
+        </div>
+
+        <div className="wrapper">
           <ul className="dream-list" ref={this.scrollContent}>
             {this.state.dreams.map((dream) => {
               return (
                 <li className="dream-item" key={dream.id}>
-                  <i
-                    className="fas fa-window-close"
-                    onClick={() => this.deleteDream(dream.id)}
-                  ></i>
+                  <button className="button-favi">
+                    <i
+                      className="fas fa-window-close"
+                      onClick={() => this.deleteDream(dream.id)}
+                    ></i>
+                  </button>
 
                   <p className="dream-title">{dream.content.title}</p>
                   <p className="dream-content">{dream.content.desc}</p>
@@ -149,19 +155,17 @@ class DreamForm extends Component {
                     {this.state.date.toLocaleDateString()}
                   </p>
                   {/* target inputs in object by name */}
-                  {/* <button onClick={() => this.deleteDream(dream.id)}>
-                    Delete
-                  </button> */}
+
                   {/* create button to delete dream by id */}
                 </li>
               );
             })}
           </ul>
-          <button className="refresh" onClick={this.handleRefresh}>
-            TOP{" "}
+          <button className="top-btn" onClick={this.handleRefresh}>
+            TOP
           </button>
         </div>
-      </form>
+      </div>
     );
   }
 }

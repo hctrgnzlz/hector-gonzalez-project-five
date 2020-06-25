@@ -10,7 +10,16 @@ class App extends Component {
         <Header />
         <DreamForm />
         <footer>
-          <p>hctr</p>
+          <p>Copyright © Hector Gonzalez 2020 </p>
+          <a href="https://hctr.ca">
+            <i class="fas fa-globe"></i>
+          </a>
+          <a href="https://github.com/hctrgnzlz/">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://twitter.com/hctrgnzlz">
+            <i class="fab fa-twitter"></i>
+          </a>
         </footer>
       </div>
     );
