@@ -49,7 +49,6 @@ class DreamForm extends Component {
     window.scrollTo(0, this.scrollContent.current.offsetTop);
   };
 
-  // Function to scroll to top of the page on refresh
   scrollToTop = () => {
     window.scrollTo(0, this.scrollTop.current.offsetTop);
   };
@@ -138,7 +137,7 @@ class DreamForm extends Component {
         </div>
 
         <div className="wrapper">
-          <ul className="dream-list" ref={this.scrollContent}>
+          <ul className="dream-list">
             {this.state.dreams.map((dream) => {
               return (
                 <li className="dream-item" key={dream.id}>
@@ -161,7 +160,11 @@ class DreamForm extends Component {
               );
             })}
           </ul>
-          <button className="top-btn" onClick={this.handleRefresh}>
+          <button
+            className="top-btn"
+            onClick={this.handleRefresh}
+            ref={this.scrollContent}
+          >
             TOP
           </button>
         </div>
